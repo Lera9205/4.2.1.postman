@@ -32,5 +32,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+         curl -o- "https://dl-cli.pstmn.io/install/osx_64.sh" | sh
+         postman login --with-api-key PMAK-6627f2f518458b0001ade1f5-c44b2c2c7fdb2f49bd00c3dd7491086417
+         postman collection run "https://api.postman.com/collections/17314289-b487c99a-c285-4c86-9aeb-21f8443693f6?access_key=PMAT-01HW5YYNR3FWFPX9FS2YXNMT9N" -e "17314289-d824eacb-80d2-496b-898a-978d468d9948"
