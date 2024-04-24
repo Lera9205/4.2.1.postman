@@ -1,0 +1,2198 @@
+{
+	"info": {
+		"_postman_id": "fb369b6d-be7e-4310-bb90-d89da80e3b63",
+		"name": "4.2.1 Задания для учеников",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "17314289-fb369b6d-be7e-4310-bb90-d89da80e3b63"
+	},
+	"item": [
+		{
+			"name": "4.2.1",
+			"item": [
+				{
+					"name": "Аутентификация",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "87374d76-4dc1-419a-aba0-c85af78797ba",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "3bac1f02-502a-4b4a-9266-3190447385f9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/login"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzODkyMDY5LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzgwNTY2OX0.9sa9RK2JyE1K6J3PiE5Q24aYXGSa1YAz3JKR4PP-kwGW3zlTJ6rWiVujLMzwflCNMWzvvoOaXGWP3HgKmgaS_Q"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin_automation\",\r\n    \"password\": \"admin_automation\",\r\n    \"rememberMe\": false\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/authenticate",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создать новую задачу",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b17e52e7-dc03-4972-ba2d-d48ad7f45c43",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const reqData = JSON.parse(request.data)\r",
+									"console.log(request.data)\r",
+									"pm.environment.set(\"id\", reqData.id)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "3fb2baa7-b7e3-4ebb-898f-a79db3f0467b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task?page=1&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Задание1\",\r\n    \"text\": \"Здесь задание\",\r\n    \"answer\": \"тест555\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks?page=0&size=20&sort=id,asc&cacheBuster=1713373740369",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								},
+								{
+									"key": "cacheBuster",
+									"value": "1713373740369"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создать нов.зад.- неверный метод PUT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ed6ca8a1-957c-4feb-88a9-b467408fce91",
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {\r",
+									"    pm.response.to.have.status(405);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "4a4f82d0-d43a-4bbf-9cd4-2d758d12e893",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task?page=1&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNTQ3NTY3LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzQ2MTE2N30.67cYRUCmLGQro2rljMIJcEkf8fC1tvAG4Sx5X39NPLtEgi9BXgMZBXjjH6gyJAGMpqXX34997sTq1dsJxRVGpQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Задание1\",\r\n    \"text\": \"Здесь задание\",\r\n    \"answer\": \"тест555\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks?page=0&size=20&sort=id,asc&cacheBuster=1713373740369",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								},
+								{
+									"key": "cacheBuster",
+									"value": "1713373740369"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создать нов.зад DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "578ab6b5-6c3b-4bf0-8edf-f8a1c939e31c",
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {\r",
+									"    pm.response.to.have.status(405);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "af2c2ed5-6d9a-4e35-a916-61276bfdf20b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task?page=1&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Задание1\",\r\n    \"text\": \"Здесь задание\",\r\n    \"answer\": \"тест555\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks?page=0&size=20&sort=id,asc&cacheBuster=1713373740369",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								},
+								{
+									"key": "cacheBuster",
+									"value": "1713373740369"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создать нов.зад без tittle",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e61974ba-3305-4e41-8410-de498d6055fb",
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "62435c39-9006-49ab-8913-bc21cf438d01",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task?page=1&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Здесь задание\",\r\n    \"answer\": \"тест555\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks?page=0&size=20&sort=id,asc&cacheBuster=1713373740369",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								},
+								{
+									"key": "cacheBuster",
+									"value": "1713373740369"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создать нов.зад. без text",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3b688aa3-0055-4c95-9944-783f8a1587c2",
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "b240cae3-ee91-4600-a26a-5255c4708953",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task?page=1&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Задание1\",\r\n    \"answer\": \"тест555\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks?page=0&size=20&sort=id,asc&cacheBuster=1713373740369",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								},
+								{
+									"key": "cacheBuster",
+									"value": "1713373740369"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создать нов.зад. без answer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "34be5311-344b-42d1-b4cf-ca96f0d1176e",
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "45637026-b902-4dcf-a324-023fbbaf91ab",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task?page=1&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Задание1\",\r\n    \"text\": \"Здесь задание\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks?page=0&size=20&sort=id,asc&cacheBuster=1713373740369",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								},
+								{
+									"key": "cacheBuster",
+									"value": "1713373740369"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Редактировать задачу",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d0a5b6fe-c99d-4701-95e6-956b0c588dae",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "8673a312-9eb3-4094-9f46-091171a43e5e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task/76354/edit?page=95&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{id}}\",\r\n    \"text\": \"Здесь заданиvе\",\r\n    \"answer\": \"тест555\",\r\n    \"title\": \"Задание555\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Редактировать задачу-с пробелом вместо id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aff6c503-0bcf-4c1b-a247-5973352c368a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "e526e02e-6f6c-45be-a359-3f349debcaa5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task/76354/edit?page=95&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":  ,\r\n    \"text\": \"Здесь задание\",\r\n    \"answer\": \"тест555\",\r\n    \"title\": \"Задание555\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks/76354",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"76354"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Редактировать задачу-пробел в Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "57d4fcbf-a965-4c40-b3c1-b2d8551983d8",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "c5051bb1-bada-4fae-b0e9-f474ec6d47c0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task/76354/edit?page=95&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7635 4,\r\n    \"text\": \"Здесь задание\",\r\n    \"answer\": \"тест555\",\r\n    \"title\": \"Задание555\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks/76354",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"76354"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Редактировать задачу-без Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6ee0db2d-b507-4104-8961-379790d83945",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "c656485c-2237-448f-887d-2fc91e333a4f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task/76354/edit?page=95&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Здесь задание\",\r\n    \"answer\": \"тест555\",\r\n    \"title\": \"Задание555\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks/76354",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"76354"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить задачу",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "011116eb-1a8f-49b3-b525-c55acbafc3fa",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "09310374-cf90-44f2-a482-e7e0cb1d312b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNjI1NDQ3LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzUzOTA0N30.yHASnOlrEAJXezGWFXoXLtHaZvb7ACfAC04_PMV8ezjWaAp4zo3YYv9mwLHtt-H--zisqAGO8xoZfQyI9L4s-w",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task/76354/edit?page=95&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNjI1NDQ3LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzUzOTA0N30.yHASnOlrEAJXezGWFXoXLtHaZvb7ACfAC04_PMV8ezjWaAp4zo3YYv9mwLHtt-H--zisqAGO8xoZfQyI9L4s-w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/tasks/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить задачу-пробел вместо id",
+					"id": "cb775d60-eb2b-4d0f-bcd5-b1b4bb76ba09",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task/76354/edit?page=95&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/tasks/ ",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								" "
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить задачу-с пробелом в Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7573594f-7218-4525-a021-88a36401445b",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "17ff6ce8-6b1c-49d5-aad0-36b6c17b981d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task/76354/edit?page=95&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/tasks/76  352",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"76  352"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить задачу- буквы в id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9c39f85b-205e-448f-ae5a-2b52a04a8276",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "73466348-b4ce-4a70-8ca5-f00ebe37de7a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task/76354/edit?page=95&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/tasks/hello",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"hello"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить задачу- без Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "58306cfe-359d-4670-a71b-19dae80aa6c0",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "4a8986df-ff59-4f67-8b2f-2fa23d75b8e7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task/76354/edit?page=95&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/tasks/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить задания учениокв",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5d0b10be-4f58-4740-a57c-bbfa29c6b884",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48486cde-fb0f-482f-9170-40f119c5f88d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNjI1NDQ3LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzUzOTA0N30.yHASnOlrEAJXezGWFXoXLtHaZvb7ACfAC04_PMV8ezjWaAp4zo3YYv9mwLHtt-H--zisqAGO8xoZfQyI9L4s-w",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/?page=1&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/tasks?page=0&size=20&sort=id,asc&cacheBuster=1713374650463",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								},
+								{
+									"key": "cacheBuster",
+									"value": "1713374650463"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создать user-task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fed96d44-a592-4465-b7bc-8699fc6b64bf",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "d162a4e6-4527-4f3d-b7aa-522709e2abff",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/user-task/new"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isSolved\": false,\r\n    \"user\": {\r\n        \"id\": 1062,\r\n        \"login\": \"adele\"\r\n    },\r\n    \"task\": {\r\n        \"id\": 57353,\r\n        \"text\": \"\",\r\n        \"answer\": \"test\",\r\n        \"title\": \"test\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/user-tasks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить задачу ученика",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "358f37a1-0755-41a6-bbba-11359266b437",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "8d7a2e1a-b6a4-431d-baa2-f18b91233308",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Referer",
+								"value": ""
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user-tasks/78952",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-tasks",
+								"78952"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "f98bd928-a162-454f-b5e4-47f4733dea24"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d6f28b5e-93cd-4d98-a249-05273d967f63",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a8bf4c42-327e-4db7-b049-4a8fc7f441b8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "ee36bc3e-25d3-4dff-8cfd-10156024aa19",
+			"key": "url",
+			"value": ""
+		}
+	]
+}
