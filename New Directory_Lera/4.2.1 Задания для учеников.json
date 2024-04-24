@@ -496,133 +496,6 @@
 					"response": []
 				},
 				{
-					"name": "Создать нов.зад без tittle",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "e61974ba-3305-4e41-8410-de498d6055fb",
-								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "62435c39-9006-49ab-8913-bc21cf438d01",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{id_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json, text/plain, */*"
-							},
-							{
-								"key": "Accept-Language",
-								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
-								"disabled": true
-							},
-							{
-								"key": "Connection",
-								"value": "keep-alive"
-							},
-							{
-								"key": "Referer",
-								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task?page=1&sort=id,asc"
-							},
-							{
-								"key": "Sec-Fetch-Dest",
-								"value": "empty"
-							},
-							{
-								"key": "Sec-Fetch-Mode",
-								"value": "cors"
-							},
-							{
-								"key": "Sec-Fetch-Site",
-								"value": "same-origin"
-							},
-							{
-								"key": "User-Agent",
-								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"Windows\""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Origin",
-								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"text\": \"Здесь задание\",\r\n    \"answer\": \"тест555\"\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/tasks?page=0&size=20&sort=id,asc&cacheBuster=1713373740369",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"tasks"
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "0"
-								},
-								{
-									"key": "size",
-									"value": "20"
-								},
-								{
-									"key": "sort",
-									"value": "id,asc"
-								},
-								{
-									"key": "cacheBuster",
-									"value": "1713373740369"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Создать нов.зад. без text",
 					"event": [
 						{
@@ -717,6 +590,133 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"title\": \"Задание1\",\r\n    \"answer\": \"тест555\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks?page=0&size=20&sort=id,asc&cacheBuster=1713373740369",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								},
+								{
+									"key": "cacheBuster",
+									"value": "1713373740369"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создать нов.зад без tittle",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e61974ba-3305-4e41-8410-de498d6055fb",
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "62435c39-9006-49ab-8913-bc21cf438d01",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEzNDYwNTc2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMzM3NDE3Nn0.QKqZpqwvKjLIE6Qe3Wam3nkGKwH-rfkDf_zZpj49VJt_bNMvyEAxGhE6WYQdYgtT5QccBd5zndHAlURqMYlucw",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Referer",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/task?page=1&sort=id,asc"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-origin"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Здесь задание\",\r\n    \"answer\": \"тест555\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/tasks?page=0&size=20&sort=id,asc&cacheBuster=1713373740369",
